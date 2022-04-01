@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function getRealLog(getfakeone){
+            let xtp = new XMLHttpRequest();
+            xtp.open('GET', '/log.json', true);
+            xtp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == '200'){
+
+                    var list = document.createElement('UL');
+
+                    list.innerHTML = this.responseText;
+
+
+                    document.querySelector('body').appendChild(list);
+                }
+            };
+            
+            xtp.send();
+            setInterval(getfakeone(), 1000);
+        }
+        const element = document.querySelector('body');
+        function getfakeone(){
+            let xxx = new XMLHttpRequest();
+            xxx.open('GET', '/log-ro.json', true);
+            xxx.onload = function(){
+                if(this.readyState == 4 && this.status == '200'){
+                    var list = document.createElement('UL');
+                    list.innerHTML = this.responseText;
+                    element.appendChild(list);
+                }
+            };
+            xtp.send();
+        }
+    </script>
+</head>
+<body onload="getRealLog()">
+
+</body>
+</html>

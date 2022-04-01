@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <title>Colors by AJAx</title>
+        <script>
+            function changeColors(){
+                let xrh = new XMLHttpRequest();
+                xrh.open("GET", "/color.txt", true);
+                xrh.onreadystatechange = function(){
+                    var heading = document.querySelector('h1')
+                    heading.innerText = this.responseText;
+                    heading.style.color = this.responseText;
+                }
+                xrh.send();
+            }
+        </script>
+    </head>
+    <body onload = "changeColors()">
+        <h1></h1>
+        <button onclick="changeColors()">Change colors</button>
+    </body>
+</html>
