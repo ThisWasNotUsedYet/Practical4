@@ -22,6 +22,7 @@ router.get('/color.html', (req, res) =>{
   res.send(`<!DOCTYPE html>
   <html lang = "en">
       <head>
+      <meta charset = "UTF-8">
           <title>
               new title
           </title>
@@ -49,7 +50,9 @@ router.get('/log.html', (_req, res)=>{
   res.send(`<!DOCTYPE html>
   <html lang = "en">
       <head>
+                <meta charset = "UTF-8">
           <title>
+
               new title
           </title>
       </head>
@@ -60,23 +63,15 @@ router.get('/log.html', (_req, res)=>{
 });
 
 
-let timestamps = null;
+const timestamps = [];
 router.get('/log.json', (req, res)=>{
   const now = new Date();
-  if (timestamps === null) {
-    timestamps = `<li>${now}</li>`;
-  } else {
-    timestamps +=`<li>${now}</li>`;
-  }
-  res.json(`${timestamps}`);
+  timestamps.push(`${now}`);
+  res.json(timestamps);
 });
 
 router.get('/log-ro.json', (req, res)=>{
-  if (timestamps === null) {
-    res.send('');
-  } else {
-    res.send(JSON.stringify(timestamps));
-  }
+  res.send(JSON.stringify(timestamps));
 });
 
 
@@ -86,6 +81,8 @@ router.get('/first.html', (req, res)=>{
     res.send(`<!DOCTYPE html>
     <html lang = "en">
         <head>
+        <meta charset = "UTF-8">
+
             <title>
                 new title
             </title>
@@ -107,6 +104,8 @@ router.get('/main.html', (req, res)=>{
     res.send(`<!DOCTYPE html>
     <html lang = "en">
         <head>
+        <meta charset = "UTF-8">
+
             <title>
                 new title
             </title>

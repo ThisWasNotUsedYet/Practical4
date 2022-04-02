@@ -4,36 +4,49 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <script>
-        function getRealLog(getfakeone){
+        function getRealLog(){
             let xtp = new XMLHttpRequest();
             xtp.open('GET', '/log.json', true);
             xtp.onreadystatechange = function(){
                 if(this.readyState == 4 && this.status == '200'){
-
-                    var list = document.createElement('UL');
-
-                    list.innerHTML = this.responseText;
-
-
-                    document.querySelector('body').appendChild(list);
+                    var uL = document.createElement('UL');
+                    const list = JSON.parse(this.responseText);
+                    console.log(list);
+                    for(const element of list){
+                        let x = document.createElement('LI');
+                        x.innerHTML = element;
+                        uL.appendChild(x);
+                    }
+                    document.querySelector('body').appendChild(uL);
                 }
             };
-            
+
             xtp.send();
-            setInterval(getfakeone(), 1000);
         }
-        const element = document.querySelector('body');
+        setInterval(getfakeone, 10000);
+        let size = 0;
         function getfakeone(){
             let xxx = new XMLHttpRequest();
             xxx.open('GET', '/log-ro.json', true);
             xxx.onload = function(){
-                if(this.readyState == 4 && this.status == '200'){
-                    var list = document.createElement('UL');
-                    list.innerHTML = this.responseText;
-                    element.appendChild(list);
+            if(this.readyState == 4 && this.status === 200){
+                const list = JSON.parse(this.responseText);
+                responseListSize = list.length;
+
+                const parent = document.querySelector("ul");
+                const current_size = parent.children.length;
+
+                var uL = document.createElement('UL');
+                if(responseListSize>current_size){
+                    for(let i = current_size; i < responseListSize; i++){
+                        const newElement = document.createElement("LI");
+                        newElement.innerHTML = list[i];
+                        parent.appendChild(newElement);
+                    }
                 }
+              }
             };
-            xtp.send();
+            xxx.send();
         }
     </script>
 </head>
