@@ -15,7 +15,6 @@ router.get('/last.txt', function(_req, res) {
   lastvisit = new Date();
 });
 
-
 // red, yellow, green, blue.
 const colors = ['red', 'yellow', 'green', 'blue'];
 let i = 0;
