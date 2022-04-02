@@ -22,5 +22,7 @@ app.use('/log.html', indexRouter);
 app.use('/main.html', indexRouter);
 app.use('/first.html', indexRouter);
 app.use('/log2.html', indexRouter);
+app.use('/search.ajax', indexRouter);
+app.use('/contact.ajax', indexRouter);
 
 module.exports = app;

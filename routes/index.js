@@ -117,4 +117,13 @@ router.get('/main.html', (req, res)=>{
     </html>`);
   }
 });
+router.get('/contact.ajax', (req, res)=>{
+  const link = '<a href = "mailto:vishaldotgarwal@gmail.com">Email link</a>';
+  res.send(`${link}`);
+});
+router.get('/search.ajax', (req, res)=>{
+  const searchbar = '<input type = "text"></input> <button>search</search>';
+  res.send(`${searchbar}`);
+});
+
 module.exports = router;

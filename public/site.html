@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+    <head>
+        <title>
+            this is another site
+        </title>
+        <meta charset = "utf-8">
+        <script>
+
+            function Contact(){
+                let x = new XMLHttpRequest();
+                x.open("GET", "/contact.ajax", true);
+                x.onreadystatechange = function(){
+                    var Main = document.querySelector("main");
+                    Main.innerHTML = this.responseText;
+                }
+                x.send();
+            }
+            function loadabout(){
+                let y = new XMLHttpRequest();
+                y.open("GET", "/about.ajax", true);
+                y.onreadystatechange = function(){
+                    var Main = document.querySelector("main");
+                    Main.innerHTML = this.responseText;
+                }
+                y.send()
+            }
+            function loadSearch(){
+                let z = new XMLHttpRequest();
+                z.open("GET", "/search.ajax", true);
+                z.onreadystatechange = function(){
+                    var Main = document.querySelector("main");
+                    Main.innerHTML = this.responseText;
+                }
+                z.send();
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>
+            My AJAX site
+        </h1>
+        <button onclick="Contact()">contact</button>
+        <button onclick= "loadSearch()">search</button>
+        <button onclick = "loadabout()">about</button>
+        <main></main>
+    </body>
+</html>
